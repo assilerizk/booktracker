@@ -7,6 +7,7 @@ import (
 	"booktracker/config"
 	"booktracker/db"
 	"booktracker/handlers"
+	"booktracker/middleware"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 
 	http.HandleFunc("/register", handlers.Register)
     http.HandleFunc("/login", handlers.Login)
+    http.HandleFunc("/books", middleware.JWTAuth(handlers.BooksHandler))
 
 	log.Println("🚀 Server running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
