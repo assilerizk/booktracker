@@ -6,7 +6,6 @@ import (
     "strings"
     "booktracker/utils"
     "booktracker/models"
-    "fmt"
 )
 
 type contextKey string

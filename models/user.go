@@ -33,3 +33,15 @@ func GetUserByUsername(username string) (User, error) {
 	}
 	return user, nil
 }
+
+func GetUserByID(userID int) (User, error) {
+    var user User
+    err := db.DB.QueryRow(
+        `SELECT id, username, password FROM users WHERE id = $1`,
+        userID,
+    ).Scan(&user.ID, &user.Username, &user.Password)
+    if err != nil {
+        return User{}, err
+    }
+    return user, nil
+}
