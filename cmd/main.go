@@ -18,6 +18,7 @@ func main() {
 	})
 
 	http.HandleFunc("/register", handlers.Register)
+    http.HandleFunc("/login", handlers.Login)
 
 	log.Println("🚀 Server running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
